@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrating the Life of Hải - A Legacy of Love and Faith</title>
+    <style>
+        body {
+            font-family: Georgia, serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #ff9a56 0%, #ffc3a0 50%, #ff677d 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #ff9a56, #ff677d);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .header .scripture {
+            font-style: italic;
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 50px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section h2 {
+            color: #34495e;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ff9a56;
+            padding-bottom: 10px;
+        }
+        
+        .intro {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #34495e;
+            margin-bottom: 40px;
+        }
+        
+        .traits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .trait {
+            background: #fff5f0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #ff9a56;
+        }
+        
+        .trait .emoji {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .joyful-spirit-bg {
+            background-image: linear-gradient(rgba(255, 245, 240, 0.5), rgba(255, 245, 240, 0.5)), url('./Photos/IMG_1636.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #2c3e50;
+            font-weight: 600;
+            border: 2px solid #ff9a56;
+        }
+        
+        .joyful-spirit-bg h4 {
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            font-weight: bold;
+        }
+        
+        .joyful-spirit-bg p {
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        .family-first-bg {
+            background-image: linear-gradient(rgba(255, 245, 240, 0.5), rgba(255, 245, 240, 0.5)), url('./Photos/IMG_3080.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #2c3e50;
+            font-weight: 600;
+            border: 2px solid #ff677d;
+        }
+        
+        .family-first-bg h4 {
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            font-weight: bold;
+        }
+        
+        .family-first-bg p {
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+        
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .memory {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ff9a56;
+        }
+        
+        .memory h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .family-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .family-member {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .family-member .name {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        
+        .family-member .relation {
+            color: #ff677d;
+            font-style: italic;
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #ff9a56, #ff677d);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .footer .prayer {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .memories, .traits, .family-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Celebrating Hải</h1>
+            <div class="subtitle">A Life of Love, Faith, and Devotion</div>
+            <div class="scripture">
+                "Well done, good and faithful servant! Come and share your master's happiness!"<br>
+                - Matthew 25:23
+            </div>
+        </header>
+        
+        <div class="content">
+            <section class="section">
+                <h2>Celebrating a Beautiful Life</h2>
+                <div class="intro">
+                    Today we celebrate the extraordinary life of Hải - a man whose love knew no bounds, whose faith anchored his family, 
+                    and whose legacy shines bright in every life he touched. As a devoted husband to Hien, loving father to Lily and Logan, 
+                    and cherished brother, Hải showed us what it means to live with purpose, work with dedication, and love without reservation. 
+                    His seven-month journey with cancer revealed the depth of his courage and the strength of his faith, inspiring all who witnessed 
+                    his grace under trial. Though we miss him deeply, we celebrate the countless ways his love continues to bless our lives.
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>His Beautiful Character</h2>
+                <div class="traits">
+                    <div class="trait">
+                        <span class="emoji">❤️</span>
+                        <h4>Devoted Family Man</h4>
+                        <p>His love for Hien, Lily, and Logan was the driving force of his life</p>
+                    </div>
+                    <div class="trait">
+                        <span class="emoji">✨</span>
+                        <h4>Incredible Work Ethic</h4>
+                        <p>60+ hours a week - every moment was an act of love for his family</p>
+                        <p><em>Even after 3 major surgeries, he was so eager to return to work as soon as his treatments were completed - his dedication never wavered.</em></p>
+                    </div>
+                    <div class="trait joyful-spirit-bg">
+                        <span class="emoji">🏈</span>
+                        <h4>Joyful Spirit</h4>
+                        <p>From childhood football to family fun - he brought joy everywhere</p>
+                    </div>
+                    <div class="trait">
+                        <span class="emoji">🌟</span>
+                        <h4>Sweet & Caring Soul</h4>
+                        <p>A gentle heart that brought comfort and happiness to others</p>
+                    </div>
+                    <div class="trait">
+                        <span class="emoji">🙏</span>
+                        <h4>Faith & Courage</h4>
+                        <p>Faced every challenge with grace, trusting God's plan</p>
+                    </div>
+                    <div class="trait family-first-bg">
+                        <span class="emoji">👨‍👩‍👧‍👦</span>
+                        <h4>Family First Always</h4>
+                        <p>Never missed what mattered - always present for love</p>
+                        <p><em>Even when his body was broken down, nothing could stop him from celebrating Logan's birthday - his determination to be there for family moments was unbreakable.</em></p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Joyful Memories to Celebrate</h2>
+                <div class="memories">
+                    <div class="memory">
+                        <h3>🏈 Childhood Joy & Brotherhood</h3>
+                        <p><strong>Late 1970s:</strong> Pure happiness playing football with brother Brian at Immaculate Elementary School - the foundation of lifelong bonds.</p>
+                        <p><strong>Early 1980s:</strong> That precious Texas family photo - Hải with football in hand, surrounded by love, showing the family values that would guide his entire life.</p>
+                    </div>
+                    
+                    <div class="memory">
+                        <h3>💕 Love Story & New Beginnings</h3>
+                        <p>The day Hải met Hien, two hearts became one. Their beautiful love story blossomed into a marriage filled with devotion, laughter, and dreams come true. Together they created a home overflowing with love.</p>
+                    </div>
+                    
+                    <div class="memory">
+                        <h3>👨‍👩‍👧‍👦 The Joy of Fatherhood</h3>
+                        <p>Becoming a father to Lily and Logan brought Hải his greatest joy. Every sleepless night, every proud moment, every sacrifice was made with a heart full of love and a smile on his face.</p>
+                    </div>
+                    
+                    <div class="memory">
+                        <h3>💪 Work as an Act of Love</h3>
+                        <p>Hải's legendary dedication - rising at 5am, working past 5pm, weekends too - wasn't just work, it was worship. Every hour was his way of saying "I love you" to his family.</p>
+                    </div>
+                    
+                    <div class="memory">
+                        <h3>🎉 Logan's Birthday Triumph</h3>
+                        <p><strong>A moment of pure love:</strong> Despite completing 5 radiation treatments, Hải found strength to stand and celebrate his son's birthday. Love truly conquers all!</p>
+                    </div>
+                    
+                    <div class="memory">
+                        <h3>🌟 Family Unity & Legacy</h3>
+                        <p>Hải was the heart that brought everyone together - parents, siblings, nieces, nephews. His love created a legacy of family bonds that will last forever.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>His Loving Legacy Lives On</h2>
+                <div class="family-grid">
+                    <div class="family-member">
+                        <div class="name">Hien</div>
+                        <div class="relation">Beloved Wife</div>
+                    </div>
+                    <div class="family-member">
+                        <div class="name">Lily</div>
+                        <div class="relation">Precious Daughter</div>
+                    </div>
+                    <div class="family-member">
+                        <div class="name">Logan</div>
+                        <div class="relation">Cherished Son</div>
+                    </div>
+                    <div class="family-member">
+                        <div class="name">Jim</div>
+                        <div class="relation">Loving Brother</div>
+                    </div>
+                    <div class="family-member">
+                        <div class="name">Brian</div>
+                        <div class="relation">Older Brother</div>
+                    </div>
+                    <div class="family-member">
+                        <div class="name">Loi</div>
+                        <div class="relation">Younger Brother</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="contact-section">
+                <h3>🌟 Join Our Celebration of Life 🌟</h3>
+                <p>We invite you to share your joyful memories, stories, and photos of Hải as we celebrate his beautiful life together. Every memory shared adds another ray of light to his lasting legacy.</p>
+                <p><strong>Contact Jim to share memories, photos, or for celebration service information</strong></p>
+                <p style="font-style: italic; margin-top: 20px;">"A life well lived leaves behind a legacy of love that never fades."</p>
+            </div>
+        </div>
+        
+        <footer class="footer">
+            <div class="prayer">
+                "Love never ends. Faith gives us hope. Life is a celebration.<br><br>
+                Hải's beautiful spirit lives on in every heart he touched,<br>
+                in every life he changed, in every moment of love he shared.<br>
+                His legacy of devotion, faith, and family will shine forever.<br><br>
+                We celebrate not just his life, but the eternal love that connects us all.<br>
+                Until we meet again in God's perfect embrace."<br><br>
+                <em>"For I am convinced that neither death nor life... will be able to separate us from the love of God."<br>
+                - Romans 8:38-39</em>
+            </div>
+            <p style="opacity: 0.7; font-size: 0.9rem;">
+                Celebrating the beautiful life of Hải - Beloved Husband, Devoted Father, Cherished Brother, Faithful Friend<br>
+                Created with abundant love by his family • 2025
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
