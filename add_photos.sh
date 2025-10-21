@@ -110,6 +110,69 @@ add_slide_to_html() {
     print_status "Added slide to slideshow.html"
 }
 
+# Function to remove deleted photos from slideshow
+remove_deleted_photos() {
+    local removed_count=0
+    local temp_file=$(mktemp)
+    
+    echo -e "${BLUE}Checking for deleted photos...${NC}"
+    
+    # Create a list of photo filenames that are referenced in slideshow but missing from folder
+    grep 'src="Photos/' "$SLIDESHOW_FILE" | sed 's/.*Photos\/\([^"]*\)".*/\1/' | while read -r photo_name; do
+        if [ ! -f "$PHOTOS_DIR/$photo_name" ]; then
+            print_warning "Photo deleted from folder: $photo_name"
+            
+            # Use sed to remove the entire slide block for this photo
+            sed -i.backup "
+            /<div class=\"slide\">/,/<\/div>/ {
+                /src=\"Photos\/$photo_name\"/ {
+                    # Found the photo reference, delete this entire slide block
+                    /<div class=\"slide\">/,/<\/div>/ d
+                }
+            }
+            " "$SLIDESHOW_FILE" 2>/dev/null || {
+                # Fallback method using awk
+                awk -v photo="$photo_name" '
+                BEGIN { in_slide = 0; skip_slide = 0; buffer = "" }
+                /<div class="slide">/ { 
+                    in_slide = 1
+                    skip_slide = 0
+                    buffer = $0
+                    next 
+                }
+                in_slide == 1 {
+                    buffer = buffer "\n" $0
+                    if (index($0, "Photos/" photo) > 0) {
+                        skip_slide = 1
+                    }
+                    if (/<\/div>/) {
+                        if (!skip_slide) {
+                            print buffer
+                        }
+                        in_slide = 0
+                        buffer = ""
+                    }
+                    next
+                }
+                { print }
+                ' "$SLIDESHOW_FILE" > "$temp_file"
+                mv "$temp_file" "$SLIDESHOW_FILE"
+            }
+            
+            ((removed_count++))
+        fi
+    done
+    
+    # Clean up backup file
+    rm "${SLIDESHOW_FILE}.backup" 2>/dev/null || true
+    
+    if [ $removed_count -gt 0 ]; then
+        print_status "Removed $removed_count deleted photos from slideshow"
+    else
+        print_status "No deleted photos found - slideshow is in sync"
+    fi
+}
+
 # Function to update slide count
 update_slide_count() {
     local photo_count=$(find "$PHOTOS_DIR" -name "*.jpeg" -o -name "*.jpg" -o -name "*.png" | wc -l | tr -d ' ')
@@ -125,21 +188,22 @@ update_slide_count() {
 show_menu() {
     echo ""
     echo -e "${BLUE}Choose an option:${NC}"
-    echo "1. Scan Photos folder for new photos (Recommended)"
+    echo "1. Scan Photos folder for changes (Add new/Remove deleted)"
     echo "2. Add new photos from another directory"
     echo "3. Add a single photo"
-    echo "4. Add background music to slideshow"
-    echo "5. List current photos"
-    echo "6. View slideshow in browser"
-    echo "7. Push changes to GitHub"
-    echo "8. Exit"
+    echo "4. Clean up deleted photos from slideshow"
+    echo "5. Add background music to slideshow"
+    echo "6. List current photos"
+    echo "7. View slideshow in browser"
+    echo "8. Push changes to GitHub"
+    echo "9. Exit"
     echo ""
 }
 
 # Function to scan Photos folder for new photos
 scan_photos_folder() {
     echo ""
-    echo -e "${BLUE}Scanning Photos folder for new images...${NC}"
+    echo -e "${BLUE}Scanning Photos folder for changes (new photos and deletions)...${NC}"
     
     if [ ! -d "$PHOTOS_DIR" ]; then
         print_error "Photos directory not found: $PHOTOS_DIR"
@@ -148,6 +212,9 @@ scan_photos_folder() {
     
     # Backup slideshow
     backup_slideshow
+    
+    # First, remove any deleted photos from slideshow
+    remove_deleted_photos
     
     # Count existing slides in slideshow
     existing_count=$(grep -c '<div class="slide">' "$SLIDESHOW_FILE" 2>/dev/null || echo "0")
@@ -433,23 +500,28 @@ main() {
     
     while true; do
         show_menu
-        read -p "Enter your choice (1-8): " choice
+        read -p "Enter your choice (1-9): " choice
         
         case $choice in
             1) scan_photos_folder ;;
             2) add_photos_from_directory ;;
             3) add_single_photo ;;
-            4) add_background_music ;;
-            5) list_photos ;;
-            6) view_slideshow ;;
-            7) push_to_github ;;
-            8) 
+            4) 
+                backup_slideshow
+                remove_deleted_photos
+                update_slide_count
+                ;;
+            5) add_background_music ;;
+            6) list_photos ;;
+            7) view_slideshow ;;
+            8) push_to_github ;;
+            9) 
                 echo ""
                 print_status "Goodbye! 💙"
                 exit 0
                 ;;
             *) 
-                print_error "Invalid choice. Please enter 1-8."
+                print_error "Invalid choice. Please enter 1-9."
                 ;;
         esac
         
