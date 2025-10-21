@@ -30,11 +30,20 @@
         }
 
         .header {
-            background: linear-gradient(45deg, #2c3e50, #34495e);
+            background: 
+                linear-gradient(45deg, rgba(44, 62, 80, 0.85), rgba(52, 73, 94, 0.85)),
+                url('./Photos/John_Ngo.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             color: white;
             text-align: center;
             padding: 50px 30px;
             position: relative;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .header::before {
@@ -44,7 +53,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,255,255,0.1));
+            background: 
+                radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%),
+                linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,255,255,0.1));
             pointer-events: none;
         }
 
@@ -56,26 +67,34 @@
         .cross-symbol {
             font-size: 3rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.8),
+                0 0 8px rgba(0,0,0,0.5);
         }
 
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            font-weight: 300;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 400;
+            text-shadow: 
+                2px 2px 4px rgba(0,0,0,0.8),
+                0 0 8px rgba(0,0,0,0.5);
         }
 
         .header .subtitle {
             font-size: 1.3rem;
-            opacity: 0.9;
             margin-bottom: 10px;
+            text-shadow: 
+                1px 1px 3px rgba(0,0,0,0.8),
+                0 0 6px rgba(0,0,0,0.5);
         }
 
         .dates {
             font-size: 1.1rem;
-            opacity: 0.8;
             font-style: italic;
+            text-shadow: 
+                1px 1px 3px rgba(0,0,0,0.8),
+                0 0 6px rgba(0,0,0,0.5);
         }
 
         .content {
@@ -267,10 +286,25 @@
             
             .header {
                 padding: 30px 20px;
+                min-height: 350px;
+                background-position: center top;
             }
             
             .header h1 {
                 font-size: 2rem;
+            }
+            
+            .cross-symbol {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .dates {
+                font-size: 1rem;
             }
             
             .content {
@@ -300,7 +334,7 @@
                 <div class="cross-symbol">✞</div>
                 <h1>Funeral Service</h1>
                 <div class="subtitle">Ông Giuse John Thắng Ngô</div>
-                <div class="subtitle">(Hải)</div>
+                <!-- <div class="subtitle">(Hải)</div> -->
                 <div class="dates">November 22, 1967 - October 18, 2025</div>
             </div>
         </header>
@@ -309,59 +343,59 @@
             <div class="service-details">
                 <div class="detail-card">
                     <h3><span class="icon">📅</span> Date & Time</h3>
-                    <p><span class="highlight">Date:</span> [Date to be confirmed]</p>
-                    <p><span class="highlight">Viewing:</span> [Time] - [Time]</p>
-                    <p><span class="highlight">Service:</span> [Time] - [Time]</p>
-                    <p><span class="highlight">Burial:</span> [Time] (Family only)</p>
+                    <p><span class="highlight">Date: </span>October 25, 2025</p>
+                    <p><span class="highlight">Viewing: </span> 9:15 am - 9:45 am</p>
+                    <p><span class="highlight">Mass: </span> 10:00 am - 11:00 am</p>
+                    <!-- <p><span class="highlight">Burial:</span> [Time] (Family only)</p> -->
                 </div>
 
                 <div class="detail-card">
                     <h3><span class="icon">⛪</span> Location</h3>
-                    <p><span class="highlight">Funeral Home:</span></p>
-                    <p>[Funeral Home Name]</p>
-                    <p>[Address Line 1]</p>
-                    <p>[City, State ZIP]</p>
-                    <p><span class="highlight">Phone:</span> [Phone Number]</p>
+                    <p><span class="highlight">ST. CHRISTOPHER CATHOLIC CHURCH</span></p>
+                    <!-- <p>[Funeral Home Name]</p> -->
+                    <p>629 S. Glendora Ave.</p>
+                    <p>West Covina, CA 91790</p>
+                    <!-- <p><span class="highlight">Phone:</span> [Phone Number]</p> -->
                 </div>
 
-                <div class="detail-card">
+                <!-- <div class="detail-card">
                     <h3><span class="icon">🌹</span> Service Type</h3>
                     <p><span class="highlight">Catholic Funeral Mass</span></p>
                     <p>Traditional Vietnamese & English</p>
                     <p>Open to all family and friends</p>
                     <p>Reception to follow</p>
-                </div>
+                </div> -->
             </div>
 
             <div class="schedule-section">
                 <h2>📋 Service Schedule</h2>
                 <div class="schedule-item">
-                    <div class="schedule-time">[Time] - [Time]</div>
-                    <div class="schedule-activity">Viewing & Family Visitation</div>
+                    <div class="schedule-time">7:00 am - 8:00 am</div>
+                    <div class="schedule-activity">Giờ Tang gia</div>
                 </div>
                 <div class="schedule-item">
-                    <div class="schedule-time">[Time]</div>
-                    <div class="schedule-activity">Opening Prayer & Welcome</div>
+                    <div class="schedule-time">8:00 am - 8:30 am</div>
+                    <div class="schedule-activity">Nghi Thức Phát Tang</div>
                 </div>
                 <div class="schedule-item">
-                    <div class="schedule-time">[Time]</div>
-                    <div class="schedule-activity">Family Remembrances & Eulogies</div>
+                    <div class="schedule-time">8:30 am - 9:15 am</div>
+                    <div class="schedule-activity">Giờ cầu nguyện Cộng Đoàn Thánh Giuse</div>
                 </div>
                 <div class="schedule-item">
-                    <div class="schedule-time">[Time]</div>
-                    <div class="schedule-activity">Catholic Funeral Mass</div>
+                    <div class="schedule-time">9:15 am - 9:45 am</div>
+                    <div class="schedule-activity">Thăm viếng</div>
                 </div>
                 <div class="schedule-item">
-                    <div class="schedule-time">[Time]</div>
-                    <div class="schedule-activity">Final Blessing & Committal</div>
+                    <div class="schedule-time">9:45 am - 9:50 am</div>
+                    <div class="schedule-activity">Di quan vào nhà thờ</div>
                 </div>
-                <div class="schedule-item">
+                <!-- <div class="schedule-item">
                     <div class="schedule-time">[Time]</div>
                     <div class="schedule-activity">Reception & Fellowship</div>
-                </div>
+                </div> -->
             </div>
 
-            <div class="family-section">
+            <!-- <div class="family-section">
                 <h2>👨‍👩‍👧‍👦 Surviving Family</h2>
                 <p>Hải is lovingly remembered by his devoted family:</p>
                 <div class="family-members">
@@ -389,9 +423,9 @@
                 <p style="margin-top: 20px; font-style: italic;">
                     Extended family, cousins, and many dear friends
                 </p>
-            </div>
+            </div> -->
 
-            <div class="contact-info">
+            <!-- <div class="contact-info">
                 <h2>📞 Contact Information</h2>
                 <div class="contact-details">
                     <div>
@@ -412,7 +446,7 @@
                     [Detailed directions or link to map]<br>
                     Parking available on-site
                 </div>
-            </div>
+            </div> -->
 
             <div class="prayer-section">
                 <h2>🙏 Memorial Prayer</h2>
@@ -428,8 +462,8 @@
             </div>
         </div>
 
-        <div class="navigation-section">
-            <h2 style="color: white; margin-bottom: 10px;">💙 Memorial Resources</h2>
+        <!-- <div class="navigation-section">
+            <!-- <h2 style="color: white; margin-bottom: 10px;">💙 Memorial Resources</h2>
             <p style="color: rgba(255,255,255,0.9); margin-bottom: 0;">Access memories, photos, and tributes</p>
             <div class="nav-links">
                 <a href="mobile.html" class="nav-link">📱 Back to Main Menu</a>
@@ -437,11 +471,11 @@
                 <a href="slideshow.html" class="nav-link">🎬 Photo Slideshow</a>
                 <a href="Memories/Brian_Mobile_Speech.html" class="nav-link">🏈 Brian's Story</a>
                 <a href="Memories/Jim_Vietnamese_Speech.html" class="nav-link">💙 Jim's Memory</a>
-            </div>
+            </div> -->
             <p style="color: rgba(255,255,255,0.8); margin-top: 20px; font-size: 0.9rem;">
                 Please share these links with family and friends who cannot attend
             </p>
-        </div>
+        </div> -->
     </div>
 
     <script>
