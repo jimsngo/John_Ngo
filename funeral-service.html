@@ -31,16 +31,16 @@
 
         .header {
             background: 
-                linear-gradient(45deg, rgba(44, 62, 80, 0.85), rgba(52, 73, 94, 0.85)),
+                linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%),
                 url('./Photos/John_Ngo.jpg');
-            background-size: cover;
-            background-position: center;
+            background-size: contain;
+            background-position: center top;
             background-repeat: no-repeat;
             color: white;
             text-align: center;
             padding: 50px 30px;
             position: relative;
-            min-height: 400px;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -53,9 +53,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
-                radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%),
-                linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,255,255,0.1));
+            background: linear-gradient(to bottom, 
+                rgba(255,255,255,0.05) 0%, 
+                rgba(255,255,255,0.15) 50%, 
+                rgba(0,0,0,0.1) 100%);
             pointer-events: none;
         }
 
@@ -67,34 +68,44 @@
         .cross-symbol {
             font-size: 3rem;
             margin-bottom: 20px;
+            color: white;
             text-shadow: 
-                2px 2px 4px rgba(0,0,0,0.8),
-                0 0 8px rgba(0,0,0,0.5);
+                2px 2px 6px rgba(0,0,0,0.9),
+                0 0 12px rgba(0,0,0,0.7),
+                -1px -1px 2px rgba(0,0,0,0.8);
         }
 
         .header h1 {
             font-size: 2.5rem;
             margin-bottom: 15px;
-            font-weight: 400;
+            font-weight: 500;
+            color: white;
             text-shadow: 
-                2px 2px 4px rgba(0,0,0,0.8),
-                0 0 8px rgba(0,0,0,0.5);
+                2px 2px 6px rgba(0,0,0,0.9),
+                0 0 12px rgba(0,0,0,0.7),
+                -1px -1px 2px rgba(0,0,0,0.8);
         }
 
         .header .subtitle {
             font-size: 1.3rem;
             margin-bottom: 10px;
+            color: white;
+            font-weight: 500;
             text-shadow: 
-                1px 1px 3px rgba(0,0,0,0.8),
-                0 0 6px rgba(0,0,0,0.5);
+                2px 2px 6px rgba(0,0,0,0.9),
+                0 0 10px rgba(0,0,0,0.7),
+                -1px -1px 2px rgba(0,0,0,0.8);
         }
 
         .dates {
             font-size: 1.1rem;
             font-style: italic;
+            color: white;
+            font-weight: 400;
             text-shadow: 
-                1px 1px 3px rgba(0,0,0,0.8),
-                0 0 6px rgba(0,0,0,0.5);
+                2px 2px 6px rgba(0,0,0,0.9),
+                0 0 10px rgba(0,0,0,0.7),
+                -1px -1px 2px rgba(0,0,0,0.8);
         }
 
         .content {
@@ -286,7 +297,8 @@
             
             .header {
                 padding: 30px 20px;
-                min-height: 350px;
+                min-height: 450px;
+                background-size: contain;
                 background-position: center top;
             }
             
@@ -331,9 +343,9 @@
     <div class="container">
         <header class="header">
             <div class="header-content">
-                <div class="cross-symbol">✞</div>
-                <h1>Funeral Service</h1>
-                <div class="subtitle">Ông Giuse John Thắng Ngô</div>
+                <!-- <div class="cross-symbol">✞</div> -->
+                <h1>Funeral Mass</h1>
+                <div class="subtitle">Giuse John Thắng Ngô</div>
                 <!-- <div class="subtitle">(Hải)</div> -->
                 <div class="dates">November 22, 1967 - October 18, 2025</div>
             </div>
