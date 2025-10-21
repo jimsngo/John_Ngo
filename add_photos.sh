@@ -125,17 +125,68 @@ update_slide_count() {
 show_menu() {
     echo ""
     echo -e "${BLUE}Choose an option:${NC}"
-    echo "1. Add new photos from a directory"
-    echo "2. Add a single photo"
-    echo "3. Add background music to slideshow"
-    echo "4. List current photos"
-    echo "5. View slideshow in browser"
-    echo "6. Push changes to GitHub"
-    echo "7. Exit"
+    echo "1. Scan Photos folder for new photos (Recommended)"
+    echo "2. Add new photos from another directory"
+    echo "3. Add a single photo"
+    echo "4. Add background music to slideshow"
+    echo "5. List current photos"
+    echo "6. View slideshow in browser"
+    echo "7. Push changes to GitHub"
+    echo "8. Exit"
     echo ""
 }
 
-# Function to add photos from directory
+# Function to scan Photos folder for new photos
+scan_photos_folder() {
+    echo ""
+    echo -e "${BLUE}Scanning Photos folder for new images...${NC}"
+    
+    if [ ! -d "$PHOTOS_DIR" ]; then
+        print_error "Photos directory not found: $PHOTOS_DIR"
+        return 1
+    fi
+    
+    # Backup slideshow
+    backup_slideshow
+    
+    # Count existing slides in slideshow
+    existing_count=$(grep -c '<div class="slide">' "$SLIDESHOW_FILE" 2>/dev/null || echo "0")
+    added_count=0
+    
+    # Find image files in Photos directory that aren't in slideshow yet
+    find "$PHOTOS_DIR" \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" -o -iname "*.gif" \) -type f | while read -r image_file; do
+        if [ -f "$image_file" ]; then
+            filename=$(basename "$image_file")
+            
+            # Check if this photo is already in the slideshow
+            if grep -q "Photos/$filename" "$SLIDESHOW_FILE" 2>/dev/null; then
+                print_warning "Already in slideshow: $filename"
+                continue
+            fi
+            
+            print_status "Found new photo: $filename"
+            
+            # Ask for caption
+            echo -n "Enter caption for $filename (or press Enter for default): "
+            read caption
+            if [ -z "$caption" ]; then
+                caption="A cherished memory of Hai with family and friends"
+            fi
+            
+            add_slide_to_html "$image_file" "$caption"
+            ((added_count++))
+        fi
+    done
+    
+    if [ $added_count -eq 0 ]; then
+        print_warning "No new photos found in Photos folder"
+    else
+        update_slide_count
+        print_status "Added $added_count new photos to slideshow!"
+    fi
+}
+
+# Function to add photos from another directory  
 add_photos_from_directory() {
     echo ""
     read -p "Enter the path to the directory containing photos: " source_dir
@@ -382,22 +433,23 @@ main() {
     
     while true; do
         show_menu
-        read -p "Enter your choice (1-7): " choice
+        read -p "Enter your choice (1-8): " choice
         
         case $choice in
-            1) add_photos_from_directory ;;
-            2) add_single_photo ;;
-            3) add_background_music ;;
-            4) list_photos ;;
-            5) view_slideshow ;;
-            6) push_to_github ;;
-            7) 
+            1) scan_photos_folder ;;
+            2) add_photos_from_directory ;;
+            3) add_single_photo ;;
+            4) add_background_music ;;
+            5) list_photos ;;
+            6) view_slideshow ;;
+            7) push_to_github ;;
+            8) 
                 echo ""
                 print_status "Goodbye! 💙"
                 exit 0
                 ;;
             *) 
-                print_error "Invalid choice. Please enter 1-7."
+                print_error "Invalid choice. Please enter 1-8."
                 ;;
         esac
         
