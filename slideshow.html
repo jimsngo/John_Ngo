@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hai's Life in Pictures - Memorial Slideshow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            overflow: hidden;
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            display: none;
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide img {
+            max-width: 80%;
+            max-height: 70%;
+            object-fit: contain;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+
+        .slide-caption {
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+
+        .slide-number {
+            font-size: 1rem;
+            opacity: 0.8;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.5);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+
+        .title-overlay {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            z-index: 100;
+        }
+
+        .title-overlay h1 {
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+            margin-bottom: 10px;
+        }
+
+        .title-overlay p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff9a56, #ff677d);
+            transition: width 0.3s ease;
+            z-index: 100;
+        }
+
+        @media (max-width: 768px) {
+            .slide img {
+                max-width: 95%;
+                max-height: 60%;
+            }
+            
+            .slide-caption {
+                font-size: 1.2rem;
+            }
+            
+            .title-overlay h1 {
+                font-size: 2rem;
+            }
+            
+            .controls {
+                bottom: 40px;
+                gap: 15px;
+            }
+            
+            .btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideshow-container">
+        <div class="title-overlay">
+            <h1>💙 Remembering Hai</h1>
+            <p>November 22, 1967 - October 18, 2025</p>
+        </div>
+
+        <div class="slide active">
+            <img src="Photos/IMG_1636.jpeg" alt="Hai playing football">
+            <div class="slide-caption">Young Hai with his beloved football - where his joyful spirit began</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_3080.jpeg" alt="Logan's birthday">
+            <div class="slide-caption">Logan's birthday - Hai's determination to be present for family moments</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_9219.jpeg" alt="Funeral announcement">
+            <div class="slide-caption">Ông Giuse John Thắng Ngô - A life of faith, love, and family devotion</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_0387.jpeg" alt="Family memory">
+            <div class="slide-caption">Precious family moments that filled Hai's heart with joy</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_1231.jpeg" alt="Family memory">
+            <div class="slide-caption">The love and laughter Hai brought to every gathering</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_1448.jpeg" alt="Family memory">
+            <div class="slide-caption">Building beautiful memories, one moment at a time</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_1855.jpeg" alt="Family memory">
+            <div class="slide-caption">Hai's gentle spirit touched everyone around him</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_2049.jpeg" alt="Family memory">
+            <div class="slide-caption">A devoted husband and father who lived for his family</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_2051.jpeg" alt="Family memory">
+            <div class="slide-caption">Celebrating life's precious moments together</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_2288.jpeg" alt="Family memory">
+            <div class="slide-caption">The warmth of family gatherings Hai cherished so deeply</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_3002.jpeg" alt="Family memory">
+            <div class="slide-caption">Creating lasting memories with the people he loved most</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_3685.jpeg" alt="Family memory">
+            <div class="slide-caption">Hai's legacy of love lives on in every smile</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_5965.jpeg" alt="Family memory">
+            <div class="slide-caption">A life filled with purpose, dedication, and endless love</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_7404.jpeg" alt="Family memory">
+            <div class="slide-caption">The strength and courage that defined Hai's journey</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_8055.jpeg" alt="Family memory">
+            <div class="slide-caption">Brotherhood, loyalty, and unconditional love</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_8298.jpeg" alt="Family memory">
+            <div class="slide-caption">Every moment was a gift when shared with Hai</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/Resized_20240405_092632.jpeg" alt="2024 memory">
+            <div class="slide-caption">Recent memories from 2024 - love that never faded</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/Resized_20240511_114836.jpeg" alt="2024 memory">
+            <div class="slide-caption">Hai's final year - still giving love, still being present</div>
+        </div>
+
+        <div class="slide">
+            <img src="Photos/IMG_9504.jpeg" alt="Final memory">
+            <div class="slide-caption">A beautiful soul whose love will live forever in our hearts</div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="prevSlide()">← Previous</button>
+            <button class="btn" onclick="toggleAutoplay()" id="autoplayBtn">⏸ Pause</button>
+            <button class="btn" onclick="nextSlide()">Next →</button>
+        </div>
+
+        <div class="slide-number">
+            <span id="currentSlide">1</span> / <span id="totalSlides">19</span>
+        </div>
+
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        let isAutoplay = true;
+        let autoplayInterval;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = index + 1;
+            
+            const progress = ((index + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            showSlide(currentSlideIndex);
+        }
+
+        function prevSlide() {
+            currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlideIndex);
+        }
+
+        function toggleAutoplay() {
+            const btn = document.getElementById('autoplayBtn');
+            if (isAutoplay) {
+                clearInterval(autoplayInterval);
+                btn.textContent = '▶ Play';
+                isAutoplay = false;
+            } else {
+                startAutoplay();
+                btn.textContent = '⏸ Pause';
+                isAutoplay = true;
+            }
+        }
+
+        function startAutoplay() {
+            autoplayInterval = setInterval(nextSlide, 4000); // 4 seconds per slide
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === ' ') {
+                e.preventDefault();
+                toggleAutoplay();
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            if (touchEndX < touchStartX - swipeThreshold) {
+                nextSlide();
+            } else if (touchEndX > touchStartX + swipeThreshold) {
+                prevSlide();
+            }
+        }
+
+        // Start autoplay when page loads
+        window.onload = function() {
+            startAutoplay();
+        };
+    </script>
+</body>
+</html>
