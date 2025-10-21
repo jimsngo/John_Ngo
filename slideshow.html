@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#2c3e50">
     <title>Hai's Life in Pictures - Memorial Slideshow</title>
     <style>
         * {
@@ -16,6 +20,12 @@
             background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
             overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .slideshow-container {
@@ -50,6 +60,11 @@
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             margin-bottom: 20px;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            pointer-events: none;
         }
 
         .slide-caption {
@@ -130,28 +145,107 @@
             z-index: 100;
         }
 
+        /* Enhanced mobile compatibility for all devices */
         @media (max-width: 768px) {
             .slide img {
                 max-width: 95%;
-                max-height: 60%;
+                max-height: 55%;
             }
             
             .slide-caption {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                padding: 0 10px;
+                line-height: 1.4;
             }
             
             .title-overlay h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+                padding: 0 10px;
+            }
+            
+            .title-overlay p {
+                font-size: 1rem;
+                padding: 0 10px;
             }
             
             .controls {
-                bottom: 40px;
-                gap: 15px;
+                bottom: 30px;
+                gap: 12px;
+                padding: 0 10px;
             }
             
             .btn {
-                padding: 8px 16px;
+                padding: 10px 18px;
                 font-size: 0.9rem;
+                min-width: 80px;
+            }
+            
+            .slide-number {
+                bottom: 10px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Extra small screens (older phones) */
+        @media (max-width: 480px) {
+            .slide img {
+                max-width: 98%;
+                max-height: 50%;
+            }
+            
+            .slide-caption {
+                font-size: 1rem;
+                padding: 0 8px;
+            }
+            
+            .title-overlay h1 {
+                font-size: 1.6rem;
+            }
+            
+            .title-overlay p {
+                font-size: 0.9rem;
+            }
+            
+            .controls {
+                bottom: 20px;
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .btn {
+                padding: 8px 14px;
+                font-size: 0.8rem;
+                min-width: 70px;
+            }
+        }
+
+        /* Landscape orientation on mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .slide img {
+                max-height: 65%;
+            }
+            
+            .title-overlay {
+                top: 10px;
+            }
+            
+            .title-overlay h1 {
+                font-size: 1.4rem;
+                margin-bottom: 5px;
+            }
+            
+            .title-overlay p {
+                font-size: 0.8rem;
+            }
+            
+            .controls {
+                bottom: 15px;
+            }
+            
+            .slide-caption {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
             }
         }
     </style>
@@ -327,31 +421,106 @@
             }
         });
 
-        // Touch/swipe support for mobile
+        // Enhanced touch/swipe support for all mobile devices
         let touchStartX = 0;
         let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+        let isSwiping = false;
 
         document.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+            touchStartX = e.changedTouches[0].clientX;
+            touchStartY = e.changedTouches[0].clientY;
+            isSwiping = false;
+        }, { passive: true });
+
+        document.addEventListener('touchmove', function(e) {
+            if (!isSwiping) {
+                const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX);
+                const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY);
+                
+                if (deltaX > deltaY && deltaX > 10) {
+                    isSwiping = true;
+                    e.preventDefault(); // Prevent scrolling when swiping horizontally
+                }
+            }
+        }, { passive: false });
 
         document.addEventListener('touchend', function(e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            if (isSwiping) {
+                touchEndX = e.changedTouches[0].clientX;
+                touchEndY = e.changedTouches[0].clientY;
+                handleSwipe();
+            }
+        }, { passive: true });
 
         function handleSwipe() {
             const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                nextSlide();
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                prevSlide();
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = Math.abs(touchEndY - touchStartY);
+            
+            // Only register horizontal swipes (not vertical scrolling)
+            if (Math.abs(deltaX) > swipeThreshold && deltaY < 100) {
+                if (deltaX < 0) {
+                    nextSlide(); // Swipe left = next slide
+                } else {
+                    prevSlide(); // Swipe right = previous slide
+                }
             }
         }
 
-        // Start autoplay when page loads
-        window.onload = function() {
+        // Prevent context menu on long press (mobile)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Handle device orientation changes
+        window.addEventListener('orientationchange', function() {
+            setTimeout(function() {
+                showSlide(currentSlideIndex);
+            }, 100);
+        });
+
+        // Preload next image for smoother transitions
+        function preloadNextImage() {
+            const nextIndex = (currentSlideIndex + 1) % totalSlides;
+            const nextImg = slides[nextIndex].querySelector('img');
+            if (nextImg && !nextImg.complete) {
+                const img = new Image();
+                img.src = nextImg.src;
+            }
+        }
+
+        // Enhanced initialization with better mobile support
+        function initSlideshow() {
+            // Preload first few images
+            for (let i = 0; i < Math.min(3, totalSlides); i++) {
+                const img = slides[i].querySelector('img');
+                if (img) {
+                    const preloadImg = new Image();
+                    preloadImg.src = img.src;
+                }
+            }
+            
+            // Start autoplay
             startAutoplay();
+            
+            // Preload next image
+            preloadNextImage();
+        }
+
+        // Better event handling for different devices
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initSlideshow);
+        } else {
+            initSlideshow();
+        }
+
+        // Update next slide function to preload
+        const originalNextSlide = nextSlide;
+        nextSlide = function() {
+            originalNextSlide();
+            preloadNextImage();
         };
     </script>
 </body>
