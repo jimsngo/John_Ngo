@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funeral Service for Ông Giuse John Thắng Ngô (Hải)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 50px 30px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,215,0,0.1), rgba(255,255,255,0.1));
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cross-symbol {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .dates {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .service-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .detail-card {
+            background: linear-gradient(135deg, #f8f9ff, #e6f3ff);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .detail-card h3 {
+            color: #2c3e50;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-card .icon {
+            font-size: 1.5rem;
+        }
+
+        .detail-card p {
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+
+        .detail-card .highlight {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .schedule-section {
+            background: linear-gradient(135deg, #fff5f5, #ffe6e6);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .schedule-section h2 {
+            color: #c0392b;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .schedule-item {
+            background: white;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #3498db;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .schedule-time {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        .schedule-activity {
+            color: #34495e;
+            margin-top: 5px;
+        }
+
+        .family-section {
+            background: linear-gradient(135deg, #f0fff4, #e6ffe6);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #27ae60;
+            text-align: center;
+        }
+
+        .family-section h2 {
+            color: #27ae60;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .family-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .family-member {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #fffbf0, #fff2e1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border-left: 5px solid #f39c12;
+        }
+
+        .contact-info h2 {
+            color: #d68910;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .navigation-section {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .nav-link {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .nav-link:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .prayer-section {
+            background: linear-gradient(135deg, #f8f4ff, #e8e1ff);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #8e44ad;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .prayer-section h2 {
+            color: #8e44ad;
+            margin-bottom: 20px;
+        }
+
+        .map-info {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .service-details {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .family-members {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="cross-symbol">✞</div>
+                <h1>Funeral Service</h1>
+                <div class="subtitle">Ông Giuse John Thắng Ngô</div>
+                <div class="subtitle">(Hải)</div>
+                <div class="dates">November 22, 1967 - October 18, 2025</div>
+            </div>
+        </header>
+
+        <div class="content">
+            <div class="service-details">
+                <div class="detail-card">
+                    <h3><span class="icon">📅</span> Date & Time</h3>
+                    <p><span class="highlight">Date:</span> [Date to be confirmed]</p>
+                    <p><span class="highlight">Viewing:</span> [Time] - [Time]</p>
+                    <p><span class="highlight">Service:</span> [Time] - [Time]</p>
+                    <p><span class="highlight">Burial:</span> [Time] (Family only)</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3><span class="icon">⛪</span> Location</h3>
+                    <p><span class="highlight">Funeral Home:</span></p>
+                    <p>[Funeral Home Name]</p>
+                    <p>[Address Line 1]</p>
+                    <p>[City, State ZIP]</p>
+                    <p><span class="highlight">Phone:</span> [Phone Number]</p>
+                </div>
+
+                <div class="detail-card">
+                    <h3><span class="icon">🌹</span> Service Type</h3>
+                    <p><span class="highlight">Catholic Funeral Mass</span></p>
+                    <p>Traditional Vietnamese & English</p>
+                    <p>Open to all family and friends</p>
+                    <p>Reception to follow</p>
+                </div>
+            </div>
+
+            <div class="schedule-section">
+                <h2>📋 Service Schedule</h2>
+                <div class="schedule-item">
+                    <div class="schedule-time">[Time] - [Time]</div>
+                    <div class="schedule-activity">Viewing & Family Visitation</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">[Time]</div>
+                    <div class="schedule-activity">Opening Prayer & Welcome</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">[Time]</div>
+                    <div class="schedule-activity">Family Remembrances & Eulogies</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">[Time]</div>
+                    <div class="schedule-activity">Catholic Funeral Mass</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">[Time]</div>
+                    <div class="schedule-activity">Final Blessing & Committal</div>
+                </div>
+                <div class="schedule-item">
+                    <div class="schedule-time">[Time]</div>
+                    <div class="schedule-activity">Reception & Fellowship</div>
+                </div>
+            </div>
+
+            <div class="family-section">
+                <h2>👨‍👩‍👧‍👦 Surviving Family</h2>
+                <p>Hải is lovingly remembered by his devoted family:</p>
+                <div class="family-members">
+                    <div class="family-member">
+                        <strong>Beloved Wife</strong><br>
+                        Lily Ngô
+                    </div>
+                    <div class="family-member">
+                        <strong>Cherished Son</strong><br>
+                        Logan Ngô
+                    </div>
+                    <div class="family-member">
+                        <strong>Loving Daughter</strong><br>
+                        Hiền Ngô
+                    </div>
+                    <div class="family-member">
+                        <strong>Dear Brother</strong><br>
+                        Jim (Sỏn) Ngô
+                    </div>
+                    <div class="family-member">
+                        <strong>Dear Brother</strong><br>
+                        Brian Thắng Ngô
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-style: italic;">
+                    Extended family, cousins, and many dear friends
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <h2>📞 Contact Information</h2>
+                <div class="contact-details">
+                    <div>
+                        <strong>🏠 Family Contact:</strong><br>
+                        Jim Ngô (Brother)<br>
+                        Phone: [Phone Number]<br>
+                        Email: [Email Address]
+                    </div>
+                    <div>
+                        <strong>⛪ Funeral Arrangements:</strong><br>
+                        [Funeral Home Name]<br>
+                        Phone: [Phone Number]<br>
+                        Director: [Director Name]
+                    </div>
+                </div>
+                <div class="map-info">
+                    <strong>🗺️ Directions:</strong><br>
+                    [Detailed directions or link to map]<br>
+                    Parking available on-site
+                </div>
+            </div>
+
+            <div class="prayer-section">
+                <h2>🙏 Memorial Prayer</h2>
+                <p>"Như vậy, ba điều này hằng tồn tại: đức tin, hy vọng, và tình yêu thương.<br>
+                Nhưng cao trọng nhất trong ba điều ấy là tình yêu thương."</p>
+                <p><em>1 Cô-rinh-tô 13:13</em></p>
+                <br>
+                <p>"For I am convinced that neither death nor life, neither angels nor demons,<br>
+                neither the present nor the future, nor any powers, neither height nor depth,<br>
+                nor anything else in all creation, will be able to separate us from the love of God<br>
+                that is in Christ Jesus our Lord."</p>
+                <p><em>Romans 8:38-39</em></p>
+            </div>
+        </div>
+
+        <div class="navigation-section">
+            <h2 style="color: white; margin-bottom: 10px;">💙 Memorial Resources</h2>
+            <p style="color: rgba(255,255,255,0.9); margin-bottom: 0;">Access memories, photos, and tributes</p>
+            <div class="nav-links">
+                <a href="mobile.html" class="nav-link">📱 Back to Main Menu</a>
+                <a href="index.html" class="nav-link">� Memorial Website</a>
+                <a href="slideshow.html" class="nav-link">🎬 Photo Slideshow</a>
+                <a href="Memories/Brian_Mobile_Speech.html" class="nav-link">🏈 Brian's Story</a>
+                <a href="Memories/Jim_Vietnamese_Speech.html" class="nav-link">💙 Jim's Memory</a>
+            </div>
+            <p style="color: rgba(255,255,255,0.8); margin-top: 20px; font-size: 0.9rem;">
+                Please share these links with family and friends who cannot attend
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling for any internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add entrance animation on page load
+        window.addEventListener('load', function() {
+            document.querySelector('.container').style.opacity = '0';
+            document.querySelector('.container').style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                document.querySelector('.container').style.transition = 'all 0.8s ease-out';
+                document.querySelector('.container').style.opacity = '1';
+                document.querySelector('.container').style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
